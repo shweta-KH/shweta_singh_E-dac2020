@@ -1,0 +1,205 @@
+Solution[1]
+mkdir {a1,a2,a3,a4,a5,a6,a7,a8,a9,a10}
+if [ -e a ]
+then
+echo "Error"
+else
+echo "ok"
+fi
+Solution[2]
+a)echo -n "Enter a string : "
+read string
+LEN=$(echo ${#string})
+if [ $LEN -lt 5 ]; then
+echo "$string doesn't have at least 5 characters"
+else
+echo "$string has 5 or more characters"
+fi
+b)str="hi"
+  str="{str}"
+  while (( ${#str2} < 20 ))
+  do
+  str2="${str2}${str}"
+  done
+  str2="${str2:0:20}"
+c)var1="Hello"
+var2="World"
+var3="$var1$var2"
+echo "$var3"
+d)read -p "Enter two string: " str1 str2
+if [ $str1 == $str2 ]
+then
+echo "Equal"
+else
+echo "unequal"
+fi
+e)input="$1"
+reverse=""
+len=${#input}
+for (( i=$len-1; i>=0; i-- ))
+do 
+reverse="$reverse${input:$i:1}"
+done
+echo "$reverse"
+
+Solution[3]
+echo $VAR_NAME
+echo $PATH
+printenv HOME
+printenv SHELL
+echo " LOGNAME: "
+echo $LOGNAME
+echo $TERM
+Solution[6]
+echo "The list of File Names"
+echo "Which have Read,Write and Execute permisions. "
+for file in *
+do
+if [ -f $file ]
+then
+if [ -r $file -a -w $file -a -x $file ]
+then
+ls -l $file
+fi
+fi
+done
+Solution[7]
+echo '\tFile List'
+echo Enter the file size
+read s1
+echo Files list whose size is greater than $s1 5000 bytes size.
+for File in *
+do
+if [ -f $File ]
+then
+s2=$(stat -c %s $File)
+if [ $s2 -gt $s1 ]
+then
+echo $File
+fi
+fi
+done
+Output:
+Enter the file size 
+5000
+Files list whose size is greater than  bytes size. 
+f1
+Solution[1]
+$vi prg7
+clear
+echo "enter year"
+read y
+k='expr $y % 4'
+if test $k -eq 0
+then
+ echo "leap year"
+else
+ echo "not a leap year"
+fi
+Solution[3.a]
+echo "Enter three Integers:"
+read a b c
+if [ $a -gt $b -a $a -gt $c ]
+then
+echo "$a is Greatest"
+elif [ $b -gt $c -a $b -gt $a ]
+then
+echo "$b is Greatest"
+else
+echo "$c is Greatest!"
+fi
+Solution[3.b]
+echo Enter four integers with space between
+read a b c d
+sum=`expr $a + $b + $c + $d`
+avg=`expr $sum / 4`
+dec=`expr $sum % 4`
+dec=`expr \( $dec \* 1000 \) / 4`
+product=`expr $a \* $b \* $c \* $d`
+echo Sum=$sum
+echo Average=$avg.$dec
+echo Product=$product
+Solution[4]
+echo "Enter a Number:"
+read n
+rem=$(( $n % 2 ))
+if [ $rem -eq 0 ]
+then
+echo "Number is even"
+else
+echo "Number is odd"
+fi
+Solution[5]
+THIS_MONTH=`date -d "$(date +%Y-%m-1) 0 month" +%-m
+Solution[7]
+echo "Program to Find Fibonacci Series"
+  echo "How many number of terms to be generated ?"
+  read n
+  x=0
+  y=1
+  i=2
+  echo "Fibonacci Series up to $n terms :"
+  echo "$x"
+  echo "$y"
+  while [ $i -lt $n ]
+  do
+  i=`expr $i + 1 `
+  z=`expr $x + $y `
+  echo "$z"
+  x=$y
+  y=$z
+  done
+Solution[8]
+echo welcome | rev
+output-
+emoclew
+Solutin[9]
+stringList=WordPress,Joomla,Magento
+for val in ${stringList//,/ }
+do
+echo $val
+done
+Solution[10]
+input="$1"
+reverse="" 
+len=${#input}
+for (( i=$len-1; i>=0; i-- ))
+do 
+reverse="$reverse${input:$i:1}"
+done
+echo "$reverse
+Solution[11]
+echo "$str" | awk '{ for (i=NF; i>1; i--) printf("%s ",$i); print $1; }'
+Solution[11]
+echo "enter the password"
+read password
+len="${#password}"
+if test $len -ge 8 ; then
+echo "$password" | grep -q [0-9]
+if test $? -eq 0 ; then
+echo "$password" | grep -q [A-Z]
+if test $? -eq 0 ; then
+echo "$password" | grep -q [a-z]   
+if test $? -eq 0 ; then
+echo "Strong password"
+else
+echo "weak password include lower case char"
+fi
+else
+echo "weak password include capital char" 
+fi
+else
+echo "please include the numbers in password it is weak password"   
+fi
+else
+echo "password lenght should be greater than or equal 8 hence weak password"
+fi
+
+
+
+
+
+
+
+
+
