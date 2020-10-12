@@ -1,0 +1,107 @@
+Solution [1]:-
+date-
+Fri Oct 9 09:20:40 PDT 2020
+date +%Y
+2020
+date +%y
+20
+date +%T
+07:21:07
+date +%b
+Sep
+date +%B
+October
+cal-
+cal -m3
+cal Mar
+cal 2021
+cal 2021 -m3
+--------------------------------------------------------------
+Solutoion[2]:
+A
+mkdir a b c
+cd a
+touch a.txt b.txt c.txt
+cd b
+touch a.txt b.txt c.txt
+cd c
+touch a.txt b.txt c.txt
+cp -r c a
+B
+mv b c
+------------------------------------------------------------------------
+Solution[3]:
+cat>file1.txt
+"message" 
+cat>file2.txt
+"message"
+cat>file3.txt
+"message"
+cat>file4.txt
+"message"
+cat>file5.txt
+"message"
+touch a.txt b.txt c.txt d.txt e.txt
+D
+rm -r a
+rm -r b c
+---------------------------------------------------------------------------
+Solution[4]
+vi myFile.txt
+cat -n myFile.txt
+to display number of each content line
+cat -b myFile.txt
+tac myFile.txt
+--------------------------------------------------------------------------
+Solution[5]
+sort MyFile.txt
+ls -a
+ls -A
+ls -r
+ls -t ls-rt
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+Solution[1]:
+mkdir shweta
+touch a.txt b.txt c.txt d.txt
+chmod +rw a.txt b.txt
+chmod +w c.txt
+cat>d.hs
+#/bin/sh
+chmod +x d.sh
+--------------------------------------------------------------------------
+Solution[2]
+chmod +x shweta
+--------------------------------------------------------------------------
+Solution[3]
+chmod -x shweta
+chmod -r shweta
+-------------------------------------------------------------------------
+Solution[4]
+echo $(Myfile.txt)
+Solution[5]
+echo>>"OS Shell scripting" >> Myfile.txt
+----------------------------------------------------------------------
+-----------------------------------------------------------------------
+Solution[1]
+mkdir a
+cd a
+mkdir b
+cd b
+mkdir c
+touch file.txt
+cp c a
+cp a b
+-----------------------------------------------------------------------
+Solution[2]
+chmod +r c
+cp a c
+cd b
+mkdir data
+chmod +rw b
+cd b
+touch data.txt
+mv c copied_dir
+chmod +x copied_dir
+cd copied_dir
+ls
