@@ -1,0 +1,1018 @@
+1. Insert and Delete an Element from array.
+
+Program:
+
+public class Delete_Element 
+{
+	
+	void insert(int arr[],int element,int position)
+	{
+		int last=arr.length;
+		for(int i=arr.length-1;i>position-1;i--)
+		{
+			arr[i]=arr[i-1];
+		}
+		arr[position-1]=element;
+		System.out.println("Insert "+element+" at "+position+" Position : ");
+		for(int i=0;i<arr.length;i++)
+			System.out.print(arr[i]+" ");
+		System.out.print(last);
+		System.out.println();
+	}
+	
+	void delete(int []arr,int element)
+	{
+		System.out.println("Delete "+element +" From array : ");
+		for( int i=0; i< arr.length; i++ )
+		{
+			if ( element == arr[i] )
+			{
+				for(int j=i;j<arr.length-1;j++)
+				{
+					arr[j]=arr[j+1];
+				}
+				break;
+			}
+		}
+		for(int i=0;i<arr.length-1;i++)
+			System.out.print(arr[i]+" ");
+		System.out.println();
+		
+	}
+	
+		
+	
+
+	public static void main(String[] args)
+	 {
+	int []arr= {1,2,3,4,5,6,7,8};
+	Delete_Element op=new Delete_Element();
+		
+	op.insert(arr,12,3);
+	op.delete(arr, 5);
+	
+
+	}
+}
+
+
+Output :
+Insert 12 at 3 Position : 
+1 2 12 3 4 5 6 7 8
+Delete 5 From array : 
+1 2 12 3 4 6 7 
+
+
+-----------------------------------------------------------------
+
+
+02. stack         Operations ->  push,  pop, peek.
+
+Program:
+
+public class Stack_Demo
+{
+	
+	 int[] stack=new int[5];
+	 int top=0;
+	
+	 public void push(int item){
+		if (top == 5-1 )
+		{
+			System.out.println("Error: Stack overflow");
+		}
+		else {
+			stack[top++] = item;
+			}
+	}
+
+	public int pop() {
+		if (top <= 0) {
+			System.out.println("Error: Stack empty");
+			return -1;
+		}
+		else 
+			return stack[--top];
+	}
+	
+	public boolean empty() {
+		return top == 0;
+	}
+	
+	public int top(){
+		if (empty())
+		{
+			System.out.println("Error: top on empty stack");
+			return -1;
+		}
+		return stack[top-1];
+	}
+
+	public static void main(String[] args)
+	{
+	
+	Stack_Demo ms = new Stack_Demo();
+	ms.push(10);
+	ms.push(7);
+	ms.push(12);
+	ms.push(4);
+	ms.push(12);
+//	ms.push(11);
+//	System.out.println(ms.pop());
+//	System.out.println(ms.pop());
+	}
+}
+
+
+----------------------------------------------------------------------------------
+
+03. Brackets               single, multiple .
+
+program:
+
+class A {
+
+	  
+		   static int countopen=0;
+		   static int countclose=0;
+		    void push(char i)
+		    {
+		        if(i=='(' || i=='{' || i=='[')
+		        {
+		       countopen++;
+		       
+		        }
+		        
+		     
+		    }
+		    void pop(char i)
+		    {
+		        if(i==')' || i=='}' || i==']')
+		        {
+		           countclose++;
+		        }
+		    }
+		}
+	public 	class ParanthesisCheck 
+		{
+		    public static void main(String[] args)
+		    {
+		    	A obj=new A();
+		        String s=("{[()]}");
+		        
+		       for (int i=0; i<s.length();i++)
+		       {
+		           obj.push(s.charAt(i));
+		       }
+		     
+		       for (int i=0; i<s.length();i++)
+		       {
+		           obj.pop(s.charAt(i));
+		       }
+		       if(A.countopen==A.countclose)
+		       {
+		           System.out.println("blanced");
+		       }
+		       else
+		       {
+		           System.out.println("unbalnced");
+		       }
+		    }
+		}
+
+
+-------------------------------------------------------------------------------
+
+
+04. linear queue           dequeue, enqueue, display.
+
+Program:
+
+public class Queue_Demo {
+	int max,rear,front;
+	int que[];
+	
+	Queue_Demo()
+	{
+		max=5;
+		rear=-1;
+		front=-1;
+		que=new int[max];
+	}
+	void insert(int item)
+	{
+		if(rear+1==max)
+		{
+			System.out.println("overflow");
+		}
+		else
+		{
+			if(front==-1 && rear==-1)
+			{
+				front=0;rear=0;
+			}
+			else
+			{
+				rear=rear+1;
+			}
+		que[rear]=item;
+		}
+	}
+	void delete()
+	{
+		int y;
+		if(front==-1 || front>rear)
+		{
+			System.out.println("UnderFlow");
+		}
+		else
+		{
+			y=que[front];
+			if(front==rear)
+				{front=rear=-1;}
+			else
+				{front=front+1;}
+		System.out.println("Deleted : "+y);
+		}
+	}
+	void show()
+	{
+		if(rear==-1)
+		{
+			System.out.println("empty");
+		}
+		for(int i=front;i<=rear;i++)
+		{
+			System.out.print(que[i]+" ");
+		}
+	}
+	
+	public static void main(String[] args) {
+		Queue_Demo q=new Queue_Demo();
+		q.insert(10);
+		q.insert(20); q.insert(30); q.insert(40); q.insert(40); 
+		q.show();
+		q.delete();
+//		q.delete(); q.delete(); q.delete();
+		q.show();
+	}
+
+}
+
+
+----------------------------------------------------------------------------------
+
+05. circular queue         dequeue, enqueue, display.
+
+Program:
+
+
+class Circular_Queue
+{
+	int front,rear;
+	int arr[],max;
+	
+	Circular_Queue()
+	{
+		max=5;
+		front=rear=-1;
+		arr=new int[max];
+	}
+	void enque(int item)
+	{
+		
+		if( front==0 && rear==max-1 )
+		{
+//			throw new ArrayIndexOutOfBoundsException("Overflow"); 
+			System.out.println("Overflow");
+		}
+		
+//		catch(ArrayIndexOutOfBoundsException ae)
+//		{
+//			System.out.println("Overflow");
+//		}
+		if(front==-1 && rear==-1)
+		{
+			front=rear=0;
+		}else if(rear==max-1 && front!=0)
+		{
+			rear=0;
+		}
+		else
+		{
+			rear=rear+1;
+		}
+		arr[rear]=item;
+		
+	}
+	
+	void deque()
+	{
+		if(front==-1)
+			System.out.println("underflow");
+		int y=arr[front];
+		if(front==rear)
+		{
+			front=rear=-1;
+			
+		}else if(front==max-1)
+		{
+			front=0;
+		}
+		else
+		{
+			front=front+1;
+		}
+		
+		
+	}
+	void print()
+	{
+		for(int i=front;i<=rear;i++)
+			System.out.print(arr[i]+" ");
+	}
+	 void display() {
+
+		    int i;
+		    if(front==-1)
+		    {
+		    	System.out.println("Queue is empty");
+		    }
+		    else { 
+		      System.out.println("Front -> " + front);
+		      System.out.println("Items -> ");
+		      for (i = front; i != rear; i = (i + 1) % max)
+		        System.out.print(arr[i] + " ");
+		      System.out.println(arr[i]);
+		      System.out.println("Rear -> " + rear);
+		    }
+	 }
+		  
+	public static void main(String[] args) {
+		Circular_Queue cq=new Circular_Queue();
+		cq.enque(10);
+		cq.enque(20);
+		cq.enque(30);
+		cq.enque(40);
+		cq.enque(50);
+//		cq.enque(60);
+		
+		cq.print();
+		System.out.printf("\n=================\n");
+		cq.deque();
+		cq.deque();
+		
+		cq.print();
+		cq.enque(60);
+		cq.enque(70);
+		System.out.printf("\n=================\n");
+		cq.display();
+	}
+}
+
+
+
+------------------------------------------------------------------------------
+
+
+doubly queue    dequeue, enqueue, display.
+
+Program:
+
+public class DoubleEndedQueue 
+{
+	Scanner sc=new Scanner(System.in);
+	int max;
+	int deque[],left,right;
+	
+	DoubleEndedQueue()
+	{
+		max=10;
+		deque=new int[max];
+		left=right=-1;
+	}
+
+	void input_deque()
+	{
+		int option;
+		do {
+		System.out.printf("\nINPUT RESTRICTED DEQUE");
+		System.out.printf("\n 1. Insert at right");
+		System.out.printf("\n 2. Delete at left");
+		System.out.printf("\n 3. Delete at right");
+		System.out.printf("\n 4. Display");
+		System.out.printf("\n 5. Quit");
+		System.out.printf("\n Enter your Option : ");
+		 option=sc.nextInt();
+		switch(option)
+			{
+				case 1:
+					insert_right();
+					break;
+				case 2:
+					delete_left();
+				case 3:
+					delete_right();
+					break;
+				case 4:
+					display();
+					break;
+			}
+		
+		}while(option!=5);
+		
+	}
+	 void insert_right() 
+	 {
+		 System.out.print("Enter the value :");
+		 int val=sc.nextInt();
+		 if(left == 0 && right == max-1 || (left == right+1))
+		 {
+			 System.out.printf("\n OVERFLOW");
+		 }
+		 if (left == -1) 
+		 {
+		 left = 0;
+		 right = 0;
+		 }
+		 else
+		 {
+		 if(right == max-1) 
+		 right = 0;
+		 else
+		 right = right+1;
+		 }
+		 deque[right] = val ;
+	}
+		 
+	 
+	 void delete_left()
+	 {
+		 if (left == -1)
+		 {
+		System.out.printf("\n UNDERFLOW");
+		 return ;
+		 }
+		 System.out.printf("\n The deleted element is : %d", deque[left]);
+		 if(left == right) 
+		 {
+		 left = -1;
+		 right = -1;
+		 }
+		 else
+		 {
+		 if(left == max-1)
+		 left = 0;
+		 else
+		 left = left+1;
+		 }
+	 }
+		 
+	 
+		
+	 void delete_right()
+	 {
+		 if (left == -1)
+		 {
+			 System.out.printf("\n UNDERFLOW");
+		 return ;
+		 }
+		 System.out.printf("\n The element deleted is : %d", deque[right]);
+		 if(left == right) 
+		 {
+		 left = -1;
+		 right = -1;
+		 }
+		 else
+		 {
+		 if(right == 0)
+		 right=max-1;
+		 else
+		 right=right-1;
+		 }
+	 }
+	
+	 void display()
+	 {
+		 int front = left, rear = right;
+		 if(front == -1)
+		 {
+			 System.out.printf("\n QUEUE IS EMPTY");
+		 return;
+		 }
+		 System.out.printf("\n The elements of the queue are : ");
+	
+		 if(front <= rear )
+		 {
+		 while(front <= rear)
+		 {
+			 System.out.printf("%d   ",deque[front]);
+		 front++;
+		 }
+		 }
+		 else
+		 {
+		 while(front <= max-1)
+		 {
+			 System.out.printf("%d   ", deque[front]);
+		 front++;
+		 }
+		 front = 0;
+		 while(front <= rear)
+		 {
+			 System.out.printf("%d  ",deque[front]);
+		 front++;
+		 }
+		 }
+	 }
+	 
+	 
+	 
+	 void output_deque()
+	 {
+		 int option;
+	 do
+	 {
+		 
+		 
+		 System.out.printf("\n 1.Insert at right");
+		 System.out.printf("\n 2.Insert at left");
+		 System.out.printf("\n 3.Delete from left");
+		 System.out.printf("\n 4.Display");
+		 System.out.printf("\n 5.Quit");
+		 System.out.printf("\n Enter your option : ");
+		 option=sc.nextInt();
+	 switch(option)
+	 {
+		 case 1:
+			 insert_right();
+			 break;
+		 case 2:
+			 insert_left();
+			 break;
+		 case 3:
+			 delete_left();
+			 break;
+		 case 4:
+			 display();
+		 break;
+	 }
+	 }while(option!=5);
+	 }
+	 
+	 void insert_left()
+	 {
+	
+	 System.out.printf("\n Enter the value to be added:");
+	 int val=sc.nextInt();
+	 if((left == 0 && right == max-1) || (left == right+1))
+	 {
+		 System.out.printf("\n Overflow");
+	 return;
+	 }
+	
+	 if (left == -1)
+	 {
+	 left = 0;
+	 right = 0;
+	 }
+	 else
+	 {
+	 if(left == 0)
+	 left=max-1;
+	 else
+	 left=left-1;
+	 }
+	 deque[left] = val;
+	 }
+	 
+	 public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);;
+		DoubleEndedQueue deq=new DoubleEndedQueue();
+		System.out.print("***** Main Manu *****\n\n");
+		System.out.println("1. Input Restricted Deque");
+		System.out.println("2. Output Restricted Deque");
+		System.out.print("Enter your option : ");
+		int option=sc.nextInt();
+		switch(option)
+		{
+			case 1:
+				deq.input_deque();
+				break;
+			case 2:
+				deq.output_deque();
+				break;
+		}
+		
+	}
+
+}
+
+---------------------------------------------------------------------------------------
+
+
+==linklist==
+Singly LL               node create,add first, add last, insert in between, 
+			delete first,delete last,delete in between, display .
+
+Program :
+
+class Node
+{
+ int data;
+ Node next;
+ Node(int d)
+ {
+     data=d;
+     next=null;
+ }
+}
+
+
+
+
+class Linked_List
+{
+	Node head;
+	void addatStart(int data)
+	{
+		Node tail=null;
+		Node New_Node=new Node(data);
+		if(head==null)
+		{
+			head=New_Node;
+			tail=New_Node;
+		}
+		else
+		{
+			Node temp=head;
+			head=New_Node;
+			head.next=temp;
+			
+		}
+		
+	}
+	
+	void insertAtEnd(int data)
+	{
+		Node tail=null;
+		Node last_Node=new Node(data);
+		if(head==null)
+		{
+			head=last_Node;
+			tail=last_Node;
+		}
+		last_Node.next=null;
+		tail=head;
+		while(tail.next!=null)
+		{
+			tail=tail.next;
+		
+		}
+		tail.next=last_Node;
+	}
+	
+	 void insertAfter(Node prev_node,int val)
+   {
+       if(prev_node==null)
+       {
+           System.out.println("invalid");
+       }
+       Node new_node=new Node(val);				
+       new_node.next=prev_node.next;				
+       prev_node.next=new_node;					
+   }
+	
+	void inserBefore(Node nextNode, int val)
+	{
+		if(nextNode==null)
+			System.out.println("invalid");
+		
+		if(head==nextNode)
+		{
+			Node NewNode=new Node(val);
+			NewNode.next=head;
+			head=NewNode;
+		}
+		else
+		{
+			Node p=null;
+			
+			for(Node NewNode=head;NewNode!=nextNode;p=NewNode,NewNode=NewNode.next);
+			Node m=new Node(val);
+			m.next=p.next;
+			p.next=m;
+		}
+		
+
+		
+		
+	}
+	
+	void deleteFirst()
+	{
+		if(head==null)
+			System.out.println("UNDERFLOW");
+		Node temp=head;
+		head=head.next;
+		temp=null;
+	}
+	
+	void deleteLastNode()
+	{
+		if(head==null)
+			System.out.println("UNDERFLOW");
+		Node ptr=head;
+		Node preptr=head;
+	      while(ptr.next!=null)
+	      {
+	    	  preptr=ptr;
+	    	  ptr=ptr.next;
+	      }
+	      preptr.next=null;
+	      
+	} 
+	
+	void deleteNode(Node del)
+	{
+		Node ptr=head;
+		Node preptr=head;
+		while(preptr.next!=del)
+		{
+			preptr=ptr;
+			ptr=ptr.next;
+		}
+		preptr.next=ptr.next;
+		ptr=null;
+	}
+	
+	
+	
+	 void printList()
+   {
+       Node n=head;
+       while(n!=null)
+       {
+           System.out.print(n.data+" ");
+           n=n.next;
+       }
+   }
+	
+	
+	public static void main(String[] args) {
+		Linked_List ll=new Linked_List();
+      
+      Node first=new Node(1);
+      Node second=new Node(2);
+      Node third=new Node(3);
+      Node forth=new Node(4);
+      Node fifth=new Node(5);
+      
+      ll.head=first;				
+      first.next=second;			
+      second.next=third;
+      third.next=forth;
+      forth.next=fifth;
+      
+      
+      ll.addatStart(20);
+      ll.printList();
+      System.out.println();
+      ll.insertAtEnd(40);
+      ll.printList();
+      System.out.println();
+      ll.insertAfter(second, 77);
+      ll.printList();
+      System.out.println();
+      ll.inserBefore(third, 88);
+      ll.printList();
+      System.out.println();
+      ll.deleteFirst();
+      ll.printList();
+      ll.deleteLastNode();
+      System.out.println();
+      ll.printList();
+      ll.deleteNode(third);
+      System.out.println();
+      ll.printList();
+      
+	}
+}
+
+
+--------------------------------------------------------------------------------
+
+
+
+doubly LL               node create,add first, add last, insert in between, 
+			delete first,delete last,delete in between, display .
+
+
+
+Program :
+
+class NodeDLL
+ {
+	public int data;
+	public NodeDLL fLink;
+	public NodeDLL bLink;
+
+	NodeDLL(int data)
+	{
+		this.data=data;
+		this.fLink=this.bLink=null;
+	}
+}
+class DoubleLinkList
+{
+	private NodeDLL start;
+	private int length;		
+	DoubleLinkList()
+	{
+		this.start=null;
+		this.length=0;
+	}
+	
+	public void insertBeg(int data)
+	{
+		NodeDLL newNode=new NodeDLL(data);
+		
+		if(start == null)
+		{
+			start=newNode;				
+		}
+		else 
+		{
+			start.bLink=newNode; 	 
+			newNode.fLink=start;
+			start=newNode;
+		}
+	}
+	public void insertEnd(int data)
+	{
+		NodeDLL newNode=new NodeDLL(data);
+		if(start == null)
+		{
+			start = newNode;	
+		}
+		else
+		{
+			NodeDLL n = start;
+			while(n.fLink != null)
+			{
+				n=n.fLink;
+			}
+			n.fLink=newNode;
+			newNode.bLink=n;
+		}
+	}
+	public void insertPos(int data,int pos)
+	{
+		if(pos == 1)
+		{
+			insertBeg(data);
+		}
+		else
+		{
+			if(pos > length)
+			{
+				insertEnd(data);
+				
+			}
+			else
+			{
+				int i=1;
+				NodeDLL n = start;
+				while(n.fLink !=null)
+				{
+					i++;
+					if(i==pos) 
+						break;
+					n=n.fLink;
+				}
+				NodeDLL newNode = new NodeDLL(data);
+				newNode.bLink=n;
+				newNode.fLink=n.fLink;
+				n.fLink.bLink=newNode;		
+				n.fLink=newNode;
+				
+			}
+			length++;
+		}
+	}
+	
+	public void deleteBeg()
+	{
+		NodeDLL n = start;
+		if(start == null)
+		{
+			System.out.println("list empty");
+		}
+		else
+		{
+			start = n.fLink;
+			start.bLink=null;
+		}
+		length--;
+	}
+	public void deletePos(int pos)
+	{
+		//position ko identify karna hai fir delete karna hai
+		if(pos <0)
+		{
+			System.out.println("pos does not exist");
+			return;
+		}
+		if(pos==1)
+		{
+			deleteBeg();
+		}
+		else if(pos >length)
+		{
+			deleteEnd();
+		}
+		else
+		{
+			int i=1;
+			NodeDLL p = start;
+			while(p.fLink != null)
+			{
+				i++;
+				if(i== pos) break;
+				p=p.fLink;
+ 			}
+			p.fLink.fLink.bLink=p;
+			p.fLink=p.fLink.fLink;
+			length--;
+		}
+		
+	}
+	public void deleteEnd()
+	{
+		if(start == null)
+		{
+			System.out.println("list empty");
+		}
+		else
+		{
+			NodeDLL n=start;
+			while(n.fLink.fLink != null)
+			{
+				n=n.fLink;
+			}
+			n.fLink.bLink=null;
+			length--;
+		}
+		
+	}
+	
+	public void displayForword()
+	{
+		NodeDLL n=start;
+		while(n.fLink !=null)
+		{
+			System.out.print(n.data+" -> " );
+			n=n.fLink;
+		}
+		System.out.println(n.data+" ");
+	}
+	
+	public void displayBackword()
+	{
+		NodeDLL n= start;
+		while(n.fLink != null)
+		{
+			n=n.fLink;
+		}
+		while(n.bLink!=null)
+		{
+			System.out.print(n.data+" <--- ");
+			n=n.bLink;
+		}
+		System.out.println(n.data+" ");
+	}
+}
+public class DoubleLL {
+
+	public static void main(String[] args) {
+		DoubleLinkList dll=new DoubleLinkList();
+		dll.insertBeg(1);
+		dll.insertBeg(2);
+		dll.insertBeg(3);
+		dll.insertBeg(4);
+		dll.displayForword();
+		System.out.println("----------------------");
+		dll.displayBackword();
+		System.out.println("----------------------");
+		dll.insertEnd(5);
+		dll.insertBeg(6);
+		dll.displayForword();
+		dll.insertPos(90, 3);
+		dll.displayForword();
+
+	}
+
+}
+
+
+---------------------------- END -------------------------------------
