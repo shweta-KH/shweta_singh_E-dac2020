@@ -1,0 +1,102 @@
+Assignment 1(DATA BASE)
+
+1) Create the table Member, Books and Issue without any constraints 
+as mentioned in the schema description above
+
+
+create table member(Member_id int(5) Primary key, Member_Name varchar(30),
+Member_Address varchar(50), Acc_Open_Date date, Membership_type varchar(20),Penalty_Amount int(7));
+
+create table Books(Book_No int(3), Book_Name varchar(30), Author_name varchar(30), Cost int(7), Category char(10));
+
+create table Issue(Lib_Issue_Id int(10), Book_No int(6),Member_Id int(5),Issue_Date date, Return_date date);
+
+--------------------------------------------------------------------------------------------------------------------------------
+2) View the structure of the tables.
+
+desc Member;
+
+desc Books;
+
+desc Issue;
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+3)  Delete/Drop the column Penalty_Amount from Member
+
+
+alter table member drop column penalty_amount;
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+4)  Insert following data in table Member:
+
+Member ID	Member Name	Member Address	Acc_Open_Date	Membership_type
+1	Richa Sharma	Pune	10-Dec-05	Lifetime
+2	Garima Sen	Pune	Current date	Annual
+
+
+insert into member values(1,"Richa Sharma","Pune","2005-12-10","LifeTime");
+
+insert into member values(2,"Garima Sen","Pune",now(),"Annual");
+
+-------------------------------------------------------------------------------------------------------------------------------------
+5)  Insert at least 5 records with suitable data and save it.
+
+
+insert into member values(1,"Richa Sharma","Pune","2005-12-10","LifeTime");
+insert into member values(2,"Garima Sen","Pune",now(),"Annual");
+insert into member values(3,"Shweta Singh","Varanasi","2020-09-22","Annual");
+insert into member values(4,"Shipra Singh","Mumbai","2014-04-12","Semi- Annual");
+insert into member values(5,"Harsh Pandey","Delhi",now(),"LifeTime");
+
+--------------------------------------------------------------------------------------------------------------------------------
+6)  Insert data in Book table as follows:
+
+Book_No	Book Name	Author	Cost	Category
+101	Let us C	Denis Ritchie	450	System
+102	Oracle – Complete Ref	Loni	550	Database
+103	Mastering SQL	Loni	250	Database
+104	PL SQL-Ref	ScottUrman	750	Database
+
+
+insert into books values(101,"Let us C","Dennis Ritchie",450,"System");
+insert into books values(102,"Oracle- Complete Ref","Loni",550,"Database");
+insert into books values(103,"Mastering SQL","Loni",250,"Database");
+insert into books values(104,"PL SQL-Ref","ScottUrman",750,"Database");
+
+------------------------------------------------------------------------------------------------------------------------------
+7)  View the data in the tables using simple SQL query.
+
+select * from member;
+
+select * from Book;
+-----------------------------------------------------------------------------------------------------------------------------------
+8)  Modify the price of book with id 103 to Rs 300 and category to RDBMS
+
+update books set cost=300 where Book_No=103;
+
+---------------------------------------------------------------------------------------------------------------------------------------
+9)  Drop table Issue.
+
+drop table issue;
+----------------------------------------------------------------------------------------------------------------------------------------
+10)	Again Create table Issue and insert following data into Issue table. Note leave the column Return_Date blank
+
+Lib_Issue_Id	Book No	Member ID	Issue Date	Return Date
+7001	101	1	10-Dec-06	
+7002	102	2	25-Dec-06	
+7003	104	1	15-Jan-06	
+7004	101	1	04-Jul-06	
+7005	104	2	15-Nov-06	
+7006	101	3	18-Feb-06	
+
+
+
+insert into issue values(7001,101,1,"2006-12-10",null);
+insert into issue values(7002,102,2,"2006-12-25",null);
+insert into issue values(7003,104,1,"2006-01-15",null);
+insert into issue values(7004,101,1,"2006-07-04",null);
+insert into issue values(7005,104,2,"2006-11-15",null);
+insert into issue values(7006,101,3,"2006-02-18",null);
+
+
