@@ -1,0 +1,92 @@
+
+ 1.	Write a Procedure that accepts values of two non-zero numbers using IN parameter and perform addition, subtraction, multiplication, division and print.
+
+delimiter $$
+create procedure Que1(in  var1 int,in var2 int )
+begin
+	select var1+var2;
+	select var1-var2;
+	select var1*var2;
+	select var1/var2;
+    end $$
+call Que1(10,20);
+***********************************************************************************
+ 2.	Write a Procedure to print the string in REVERSE order. Take the input using IN parameter. (Ex .Database , o/p :esabatad)
+
+
+delimiter $$
+CREATE PROCEDURE SP_2(INOUT STR VARCHAR(10))
+BEGIN
+SET STR=(SELECT REVERSE(STR));
+END $$
+SET @STR='DATABASE';
+CALL SP_2(@STR);
+SELECT @STR AS REV;
+*********************************************************************************
+3.	Write a Procedure to display top 5 employee based on highest salary and display employee number, employee name and salary.
+
+DELIMITER $$
+CREATE PROCEDURE QUES03()
+BEGIN
+	SELECT EMPNO, ENAME, SAL FROM EMP ORDER BY SAL DESC LIMIT 5;
+END $$
+
+CALL QUES03();
+****************************************************************************************
+4.	Write a Procedure to create table emp_test with e_id integer, e_name varchar(10), e_joining_date date as columns
+
+
+delimiter $$
+create procedure sp_4()
+begin
+create table emp_test(emp_id int,ename varchar(20),ejoining_date date);
+end $$
+call sp_4;
+****************************************************************************************
+5.	Write a Procedure to add a department row in the DEPT table with the following values for columns
+
+delimiter $$
+ create procedure sp_5()
+ begin 
+ insert into dept(dno,dname,area)values(60,'education','pune');
+end $$
+select * from dept;
+*************************************************************************************************************************
+6.	Write a program that declares an integer variable called num, assigns a value to it and print, the value of the variable itself, its square, and its cube.
+
+delimiter $$
+create procedure Que06( in value int ,out squr int,out cube int)
+begin 
+declare val1 int ;
+set val1=value;
+set squr = power(val1,2);
+set cube = power(val1,3);
+end;$$
+
+call Que06(2,@sqr,@cube);
+select @sqr;
+select @cube;
+***********************************************************************************************
+7.	Write a program that declares an integer variable assign a value to it and display it using OUT parameter.
+
+delimiter $$
+CREATE PROCEDURE SP_7(OUT ANS INT)
+BEGIN
+DECLARE NUM int;
+SET NUM=2;
+SELECT NUM  INTO ANS ;
+END $$
+
+CALL SP_7(@ANS);
+SELECT @ANS;
+*****************************************************************************************
+8.	Write a program that demonstrates the usage of IN and OUT parameters.
+
+delimiter $$
+CREATE PROCEDURE SP_8(IN X INT,OUT STR VARCHAR(50))
+BEGIN
+SELECT concat(E.ENAME,' IS FROM ',D.DNAME) INTO STR  FROM EMP E INNER JOIN DEPT D ON D.DNO=E.DEPTNO WHERE E.DEPTNO=X AND E.EMPNO=1004;
+END $$
+
+CALL SP_8(10,@STR);
+SELECT @STR;
