@@ -1,0 +1,144 @@
+1) A sparse array is one in which the elements do not have contiguous indexes starting at 0. 
+Normally, the length property of an array specifies the number of elements in the array. 
+If the array is sparse, the value of the length property is greater than the number of elements. 
+Sparse arrays can be created with the Array() constructor or simply by assigning to an array index
+ larger than the current array length.
+
+
+Eg.)
+var a = [,];
+
+var a2 = [ undefined];
+
+
+0 in a;
+false
+
+0 in a2;
+true
+
+
+2)
+
+
+abstract	arguments	await*	boolean
+break	byte	case	catch
+char	class*	const	continue
+debugger	default	delete	do
+double	else	enum*	eval
+export*	extends*	false	final
+finally	float	for	function
+goto	if	implements	import*
+in	instanceof	int	interface
+let*	long	native	new
+null	package	private	protected
+public	return	short	static
+super*	switch	synchronized	this
+throw	throws	transient	true
+try	typeof	var	void
+volatile	while	with	yield
+
+
+
+3)
+
+
+Arthimetic Operators
++ , * , - , / ,** , ++ , -- , %
+
+
+Assignment Operators
+
+= ,+= ,-= ,*= , /= ,%= , **=
+
+
+Comparision Operators
+
+==, ===, !=, !==,>,<,>=,<=,?
+
+
+Logical Operators
+
+&&, || , !
+
+
+Type Operators
+
+typeof, instanceof
+
+
+Bitwise Operators
+
+&,|,~,^,<<,>>,>>>
+
+
+
+4) 
+
+
+var a = 42;
+console.log(typeof(a));
+number
+
+var a = "Hello";
+console.log(typeof(a));
+string
+
+
+
+5)
+
+var bikes = ["Ninja", "BMW", "KTM", "Hero", "Bajaj", "Honda"];
+var text = "";
+for(var i = 0; i<bikes.length;i++)
+{
+    text+=bikes[i] + ",";
+}
+console.log(text);
+VM541:7 Ninja,BMW,KTM,Hero,Bajaj,Honda
+
+
+
+6)
+
+
+var d = new Date();
+console.log(d.getDate());
+8
+
+var d = new Date();
+console.log(d.getFullYear());
+2021
+
+
+7)
+
+
+const param1 = true;
+const param2 = false;
+function twoParams(param1, param2){
+  console.log(param1, param2);
+}
+
+twoParams(param1,param2);
+true false
+
+
+var hello;
+
+hello = () => "Hello World!";
+() => "Hello World!"
+
+
+function myFunction(p1, p2) {
+  return p1 * p2;   
+}
+
+myFunction(2,3)
+6
+
+
+
+
+
+
